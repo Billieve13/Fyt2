@@ -3,17 +3,27 @@ import { View, Text, ImageBackground, TouchableOpacity, StyleSheet } from "react
 
 export default function HomeScreen({ navigation }) {
   return (
-    <ImageBackground source={require("../../assets/background.jpeg")} style={styles.background}>
+    //source={require("../../assets/background.jpeg")}
+    <ImageBackground
+      style={styles.background}
+    >
       <View style={styles.overlay}>
-        <Text style={styles.title}>Fyt</Text>
+        <Text style={styles.title}>
+          Strengthen{"\n"}
+          Win{"\n"}
+          Achieve{"\n"}
+          Reach{"\n"}
+          Motivate{"\n"}
+        </Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.loginButton}>
+            <Text style={styles.loginButtonText}>LOG IN</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Sign Up")}>
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Log In</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.getStartedButton} onPress={() => navigation.navigate("Sign Up")}>
+            <Text style={styles.getStartedButtonText}>GET STARTED</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -28,27 +38,53 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay for readability
+    backgroundColor: "rgba(0, 0, 0, 1)", // Dark overlay for readability
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   title: {
-    fontSize: 48,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#FFFFFF",
     marginBottom: 40,
+    fontFamily: "Montserrat",
+    // position: "absolute",
+    alignItems: 'center'
+    // marginTop: '20'
   },
-  button: {
-    backgroundColor: "#ff6b6b",
+  buttonContainer: {
+    position: "absolute",
+    bottom: 50, // Position buttons at the bottom with some space
+    width: "100%",
+    alignItems: "center", // Center the buttons horizontally
+  },
+  loginButton: {
+    backgroundColor: "grey",
+    marginBottom: '10',
     paddingVertical: 15,
     paddingHorizontal: 40,
-    borderRadius: 8,
+    borderRadius: 2,
     marginVertical: 10,
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
+  loginButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
     fontWeight: "bold",
+    fontFamily: 'Montserrat',
+  },
+  getStartedButton: {
+    backgroundColor: "transparent",
+    marginBottom: '10',
+    paddingVertical: 15,
+    paddingHorizontal: 40,
+    borderRadius: 2,
+    marginVertical: 10,
+  },
+  getStartedButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: "bold",
+    fontFamily: 'Montserrat',
   },
 });
