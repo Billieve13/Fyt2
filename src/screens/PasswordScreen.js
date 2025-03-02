@@ -27,7 +27,7 @@ export default function PasswordScreen({ route, navigation }) {
       </TouchableOpacity>
 
       <Text style={styles.passwordTitle}>Create a Password</Text>
-      <Text style={styles.subtitle}>for {email}</Text>
+      <Text style={styles.passwordSubtitle}>for {email}</Text>
 
       <TextInput
         style={styles.input}
@@ -48,7 +48,16 @@ export default function PasswordScreen({ route, navigation }) {
 
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-      <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
+      <TouchableOpacity
+        style={styles.continueButton}
+        onPress={() => {
+          if (password === confirmPassword && password.length > 5) {
+            navigation.navigate("Interests"); // Navigate to InterestsScreen
+          } else {
+            alert("Passwords do not match or are too short.");
+          }
+        }}
+      >
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
     </View>
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "white",
   },
-  subtitle: {
+  passwordSubtitle: {
     fontSize: 16,
     color: "#A1A1A1",
     marginBottom: 20,
