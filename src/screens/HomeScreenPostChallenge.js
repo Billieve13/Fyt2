@@ -4,11 +4,11 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 // Dummy data for posts
 const posts = [
-  { id: "1", name: "John Doe", imageUri: "https://via.placeholder.com/100" },
-  { id: "2", name: "Jane Smith", imageUri: "https://via.placeholder.com/100" },
-  { id: "3", name: "Tom Brown", imageUri: "https://via.placeholder.com/100" },
-  { id: "4", name: "Alice Green", imageUri: "https://via.placeholder.com/100" },
-  { id: "5", name: "Bob White", imageUri: "https://via.placeholder.com/100" },
+  { id: "1", name: "Josh Allen", imageUri: "https://via.placeholder.com/100" },
+  { id: "2", name: "Kaleb", imageUri: "https://via.placeholder.com/100" },
+  { id: "3", name: "Jessica", imageUri: "https://via.placeholder.com/100" },
+  { id: "4", name: "Ryan", imageUri: "https://via.placeholder.com/100" },
+  { id: "5", name: "Kevin", imageUri: "https://via.placeholder.com/100" },
 ];
 
 export default function HomeScreenPostChallenge({ isChallengeCompleted }) {
