@@ -18,7 +18,7 @@ export default function LandingScreen({ navigation }) {
             <Text style={styles.createAccountButtonText}>Create account</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate("HomePost")}>
+          <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate("Create account")}>
             {/* need to fix the navigation for this. it currently leads nowhere*/}
             <Text style={styles.signInButtonText}>Sign in</Text>
           </TouchableOpacity>

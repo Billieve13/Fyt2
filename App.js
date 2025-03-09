@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import LandingScreen from "./src/screens/LandingScreen.js";
@@ -8,13 +8,21 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PasswordScreen from "./src/screens/PasswordScreen.js";
 import InterestsScreen from "./src/screens/InterestsScreen.js";
 import HomeScreenPreChallenge from "./src/screens/HomeScreenPreChallenge.js";
-import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
+// import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Drawer = createDrawerNavigator();
 const Home = createBottomTabNavigator();
 
 function HomeNavigator() {
+  // const [isChallengeCompleted, setIsChallengeCompleted] = useState(false);
+
+  // useEffect(() => {
+  //   // You can update this logic based on the actual challenge state
+  //   // For example, fetch from an API or use a global state (like Redux)
+  //   setIsChallengeCompleted(false); // Change this based on actual condition
+  // }, []);
+
   return (
     <Home.Navigator
       screenOptions={{
@@ -29,6 +37,7 @@ function HomeNavigator() {
     >
       <Home.Screen
         name="HomeTab"
+        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -39,6 +48,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Trophy"
+        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -49,6 +59,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Search"
+        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -59,6 +70,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Heartbeat"
+        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -69,6 +81,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Profile"
+        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
@@ -114,11 +127,11 @@ export default function App() {
           component={HomeNavigator}
           options={{ headerTitle: '' }} // Hide name for the drawer screen
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="HomePost"
           component={HomeScreenPostChallenge}
           options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
+        /> */}
       </Drawer.Navigator>
     </NavigationContainer>
   );
