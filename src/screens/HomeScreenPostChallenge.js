@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function HomeScreen() {
+export default function HomeScreenPostChallenge() {
   // Manage active tab state
   const [activeTab, setActiveTab] = useState("");//need to change the state so it is not rendered each time
 

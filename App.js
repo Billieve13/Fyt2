@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PasswordScreen from "./src/screens/PasswordScreen.js";
 import InterestsScreen from "./src/screens/InterestsScreen.js";
 import HomeScreenPreChallenge from "./src/screens/HomeScreenPreChallenge.js";
-// import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
+import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Drawer = createDrawerNavigator();
@@ -112,6 +112,11 @@ export default function App() {
         <Drawer.Screen
           name="Home"
           component={HomeNavigator}
+          options={{ headerTitle: '' }} // Hide name for the drawer screen
+        />
+        <Drawer.Screen
+          name="HomePost"
+          component={HomeScreenPostChallenge}
           options={{ headerTitle: '' }} // Hide name for the drawer screen
         />
       </Drawer.Navigator>
