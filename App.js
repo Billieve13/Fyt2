@@ -7,7 +7,8 @@ import CreateAccountScreen from "./src/screens/CreateAccountScreen.js";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PasswordScreen from "./src/screens/PasswordScreen.js";
 import InterestsScreen from "./src/screens/InterestsScreen.js";
-import HomeScreen from "./src/screens/HomeScreen.js";
+import HomeScreenPreChallenge from "./src/screens/HomeScreenPreChallenge.js";
+// import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 const Drawer = createDrawerNavigator();
@@ -28,7 +29,7 @@ function HomeNavigator() {
     >
       <Home.Screen
         name="HomeTab"
-        component={HomeScreen}
+        component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="home" size={focused ? 26 : 20} color={color} />
@@ -38,7 +39,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Trophy"
-        component={HomeScreen}
+        component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="trophy" size={focused ? 26 : 20} color={color} />
@@ -48,7 +49,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Search"
-        component={HomeScreen}
+        component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="search" size={focused ? 26 : 20} color={color} />
@@ -58,7 +59,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Heartbeat"
-        component={HomeScreen}
+        component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="heartbeat" size={focused ? 26 : 20} color={color} />
@@ -68,7 +69,7 @@ function HomeNavigator() {
       />
       <Home.Screen
         name="Profile"
-        component={HomeScreen}
+        component={HomeScreenPreChallenge}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="user" size={focused ? 26 : 20} color={color} />
