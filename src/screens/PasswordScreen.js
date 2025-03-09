@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View, Text, TextInput, TouchableOpacity, StyleSheet,
+  TouchableWithoutFeedback, Keyboard
+} from "react-native";
 
 export default function PasswordScreen({ route, navigation }) {
   const { email } = route.params;
@@ -16,56 +19,57 @@ export default function PasswordScreen({ route, navigation }) {
       setError("Passwords do not match.");
       return;
     }
-    // Proceed with account creation logic
     console.log("Account created for:", email);
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
-        <Text style={styles.closeButtonText}>X</Text>
-      </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.passwordScreenContainer}>
+        <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
+          <Text style={styles.closeButtonText}>X</Text>
+        </TouchableOpacity>
 
-      <Text style={styles.passwordTitle}>Create a Password</Text>
-      <Text style={styles.passwordSubtitle}>for {email}</Text>
+        <Text style={styles.passwordTitle}>Create a Password</Text>
+        <Text style={styles.passwordSubtitle}>for {email}</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Enter Password"
-        placeholderTextColor="#A1A1A1"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        placeholderTextColor="#A1A1A1"
-        secureTextEntry
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Enter Password"
+          placeholderTextColor="#A1A1A1"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Confirm Password"
+          placeholderTextColor="#A1A1A1"
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
 
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
-      <TouchableOpacity
-        style={styles.continueButton}
-        onPress={() => {
-          if (password === confirmPassword && password.length > 5) {
-            navigation.navigate("Interests"); // Navigate to InterestsScreen
-          } else {
-            alert("Passwords do not match or are too short.");
-          }
-        }}
-      >
-        <Text style={styles.buttonText}>Submit</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => {
+            if (password === confirmPassword && password.length > 5) {
+              navigation.navigate("Interests"); // Navigate to InterestsScreen
+            } else {
+              alert("Passwords do not match or are too short.");
+            }
+          }}
+        >
+          <Text style={styles.submitButtonText}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  passwordScreenContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
     color: "#A1A1A1",
     marginBottom: 20,
   },
-  input: {
+  passwordInput: {
     height: 50,
     borderWidth: 1,
     borderColor: "#ccc",
@@ -104,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     alignItems: "center",
   },
-  buttonText: {
+  submitButtonText: {
     color: "#D9D9D9",
     fontSize: 18,
     fontWeight: "bold",

@@ -41,7 +41,7 @@ export default function InterestsScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.interestsScreencontainer}>
       <Text style={styles.interestsHeader}>Your Interests</Text>
       <Text style={styles.interestsSubtext}>
         Pick up to 5 things you love. It'll help us suggest communities for you.
@@ -80,14 +80,14 @@ export default function InterestsScreen({ navigation }) {
         </View>
       ))}
 
-      <View style={styles.bottomContainer}>
+      <View style={styles.interestsScreenBottomContainer}>
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text style={styles.skipText}>Skip</Text>
         </TouchableOpacity>
         <Text style={styles.selectedCount}>{selectedInterests.length}/5 selected</Text>
         <TouchableOpacity
           style={styles.nextButton}
-          onPress={() => navigation.navigate("NextScreen")}
+          onPress={() => navigation.navigate("Home")}
         >
           <MaterialCommunityIcons name="arrow-right" size={24} color="#FFFFFF" />
         </TouchableOpacity>
@@ -97,7 +97,7 @@ export default function InterestsScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  interestsScreencontainer: {
     flex: 1,
     padding: 20,
     backgroundColor: "#000",
@@ -157,11 +157,12 @@ const styles = StyleSheet.create({
   chipIcon: {
     marginRight: 5,
   },
-  bottomContainer: {
+  interestsScreenBottomContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     position: "absolute",
+    marginBottom: '20',
     bottom: 20,
     left: 20,
     right: 20,
@@ -174,6 +175,7 @@ const styles = StyleSheet.create({
   selectedCount: {
     color: "#D9D9D9",
     fontSize: 16,
+    marginLeft: '13'
   },
   nextButton: {
     width: 50,

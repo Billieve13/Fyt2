@@ -1,106 +1,69 @@
-import React from "react";
-import { View, Text, ImageBackground, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen() {
+  // Manage active tab state
+  const [activeTab, setActiveTab] = useState("");//need to change the state so it is not rendered each time
+
   return (
-    //source={require("../../assets/background.jpeg")}
-    <ImageBackground
-      style={styles.homeScreenBackground}
-    >
-      <View style={styles.homeScreenOverlay}>
-        <Text style={styles.homeScreenTitle}>
-          "Unveil"{"\n"}
-          your true{"\n"}
-          potential{"\n"}
-        </Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.createAccountButton} onPress={() => navigation.navigate("Create account")}>
-            <Text style={styles.createAccountButtonText}>Create account</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate("Sign in")}>
-            {/* need to fix the navigation for this. it currently leads nowhere*/}
-            <Text style={styles.signInButtonText}>Sign in</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.trouble}>
-          Trouble signing in?{"\n"}
-          </Text>
-
-        </View>
+    <View style={styles.homeScreencontainer}>
+      {/* Top Navigation Bar */}
+      <View style={styles.homeScreenTopNav}>
+        <Icon name="user-friends" size={24} color="white" style={styles.homeScreenTopLeftIcon} />
+        <Image source={require('../../assets/background.jpeg')} style={styles.homeScreenProfilePic} />
       </View>
-    </ImageBackground>
+
+      {/* Tabs */}
+      <View style={styles.homeScreenTabs}>
+        <TouchableOpacity onPress={() => setActiveTab("Friends")}>
+          <Text style={[styles.homeScreenTabText, activeTab === "Friends" && styles.homeScreenActiveTab]}>
+            Friends
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setActiveTab("Explore")}>
+          <Text style={[styles.homeScreenTabText, activeTab === "Explore" && styles.homeScreenActiveTab]}>
+            Explore
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setActiveTab("Community")}>
+          <Text style={[styles.homeScreenTabText, activeTab === "Community" && styles.homeScreenActiveTab]}>
+            Community
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Blurred Exercise Image with Eye Icon */}
+      <View style={styles.homeScreenChallengeContainer}>
+        <Image source={{ uri: "https://via.placeholder.com/300" }} style={styles.blurredImage} />
+        <Icon name="eye-slash" size={30} color="white" style={styles.eyeIcon} />
+        <Text style={styles.homeScreenChallengeText}>Complete Daily Challenge</Text>
+        <Text style={styles.homeScreenChallengeSubText}>To view your friends' posts/achievements, complete yours!</Text>
+      </View>
+
+      {/* Daily Streak */}
+      <View style={styles.homeScreenDailyStreak}>
+        <Icon name="fire" size={24} color="orange" style={styles.fireIcon} />
+        <Text style={styles.homeScreenDailyStreakText}>Daily Streak</Text>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  homeScreenBackground: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  homeScreenOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 1)", // Dark overlay for readability
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  homeScreenTitle: {
-    fontSize: 48,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-    marginBottom: 40,
-    fontFamily: "Montserrat",
-    alignItems: 'center'
-  },
-  buttonContainer: {
-    position: "absolute",
-    bottom: 50, // Position buttons at the bottom with some space
-    width: "100%",
-    alignItems: "center", // Center the buttons horizontally
-  },
-  createAccountButton: {
-    backgroundColor: "#D9D9D9",
-    marginBottom: '30',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    marginVertical: 10,
-    width: "324",
-    height: "54"
-  },
-  createAccountButtonText: {
-    color: "#000000",
-    fontSize: 16,
-    fontWeight: "bold",
-    fontFamily: 'Montserrat',
-    textAlign: 'center'
-  },
-  signInButton: {
-    backgroundColor: "#D9D9D9",
-    marginBottom: '30',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 30,
-    marginVertical: 10,
-    width: "324",
-    height: "54",
-  },
-  signInButtonText: {
-    color: "#000000",
-    fontSize: 16,
-    fontWeight: "bold",
-    fontFamily: 'Montserrat',
-    textAlign: 'center'
-  },
-  trouble: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#FFFFFF",
-    marginBottom: 20,
-    fontFamily: "Montserrat",
-    alignItems: 'center'
-  },
+  homeScreencontainer: { flex: 1, backgroundColor: "black", alignItems: "center" },
+  homeScreenTopNav: { flexDirection: "row", justifyContent: "space-between", width: "100%", padding: 20, position: "absolute", top: 40 },
+  homeScreenTopLeftIcon: { marginLeft: 10 },
+  homeScreenProfilePic: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
+  homeScreenTabs: { flexDirection: "row", justifyContent: "space-around", width: "100%", marginTop: 120 },
+  homeScreenTabText: { color: "gray", fontSize: 18 }, // Use gray for inactive tabs
+  homeScreenActiveTab: { color: "white", fontWeight: "bold" }, // Active tab text will be white and bold
+  homeScreenChallengeContainer: { alignItems: "center", marginTop: 100 },
+  blurredImage: { width: 300, height: 200, opacity: 0.3, borderRadius: 10 },
+  eyeIcon: { position: "absolute", top: "40%" },
+  homeScreenChallengeText: { color: "white", fontSize: 20, fontWeight: "bold", marginTop: 10 },
+  homeScreenChallengeSubText: { color: "gray", fontSize: 14, textAlign: "center", width: 250, marginTop: 5 },
+  homeScreenDailyStreak: { flexDirection: "row", alignItems: "center", marginTop: 20 },
+  fireIcon: { marginRight: 5 },
+  homeScreenDailyStreakText: { color: "white", fontSize: 16 }
 });

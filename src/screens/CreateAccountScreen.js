@@ -13,7 +13,7 @@ export default function CreateAccountScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       {/* Ensure only one root child (View) under TouchableWithoutFeedback */}
-      <View style={styles.container}>
+      <View style={styles.createAccountContainer}>
         {/* X Button to go back to Home Screen */}
         <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
           <Text style={styles.closeButtonText}>X</Text>
@@ -28,10 +28,10 @@ export default function CreateAccountScreen({ navigation }) {
         </Text>
 
         {/* Email input field */}
-        <View style={styles.emailContainer}>
+        <View style={styles.emailButtonContainer}>
           <TextInput
-            style={[styles.email, isFocused && styles.focusedInput]} // Apply focused style when focused
-            placeholder="jdoe1234@gmail.com"
+            style={[styles.emailText, isFocused && styles.focusedInput]} // Apply focused style when focused
+            placeholder="Example: jdoe1234@gmail.com"
             placeholderTextColor="#4A4A4A"
             value={email}
             onChangeText={setEmail}
@@ -83,7 +83,7 @@ export default function CreateAccountScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  createAccountContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -105,20 +105,20 @@ const styles = StyleSheet.create({
     color: 'white',
     marginBottom: 5
   },
-  emailContainer: {
+  emailButtonContainer: {
     width: "80%",
     marginBottom: 20,
     position: "relative",
     marginRight: 5,
   },
-  email: {
+  emailText: {
     height: 50,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,
     paddingHorizontal: 15,
     marginBottom: 0,
-    color: "#fff",
+    color: "#FFFFFF",
     backgroundColor: "#4A4A4A",
     opacity: .75,
     width: '90%',
@@ -131,9 +131,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 25,
     top: 12,
+    marginTop: '2',
+    height: '20',
+    width: '20',
     backgroundColor: "#ccc",
     borderRadius: 10,
-    padding: 4,
+    // padding: 4,
     justifyContent: "center",
     alignItems: "center",
   },
