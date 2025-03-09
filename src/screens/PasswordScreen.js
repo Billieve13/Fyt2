@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  View, Text, TextInput, TouchableOpacity, StyleSheet,
-  TouchableWithoutFeedback, Keyboard
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
 
 export default function PasswordScreen({ route, navigation }) {
   const { email } = route.params;
@@ -10,17 +7,17 @@ export default function PasswordScreen({ route, navigation }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleContinue = () => {
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
-      return;
-    }
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-    console.log("Account created for:", email);
-  };
+  // const handleContinue = () => {//this needs to be implemented, but currently serves no purpose
+  //   if (password.length < 8) {
+  //     setError("Password must be at least 8 characters long.");
+  //     return;
+  //   }
+  //   if (password !== confirmPassword) {
+  //     setError("Passwords do not match.");
+  //     return;
+  //   }
+  //   console.log("Account created for:", email);
+  // };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -55,7 +52,7 @@ export default function PasswordScreen({ route, navigation }) {
           style={styles.continueButton}
           onPress={() => {
             if (password === confirmPassword && password.length > 5) {
-              navigation.navigate("Interests"); // Navigate to InterestsScreen
+              navigation.navigate("Interests");
             } else {
               alert("Passwords do not match or are too short.");
             }

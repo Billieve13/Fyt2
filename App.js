@@ -15,7 +15,7 @@ const Drawer = createDrawerNavigator();
 const Home = createBottomTabNavigator();
 
 export default function App() {
-  const { isChallengeCompleted, setIsChallengeCompleted } = useState(false);  // Access the state here
+  const [ isChallengeCompleted, setIsChallengeCompleted ] = useState(false);  // Access the state here
 
   const HomeNavigator = () => {
     return (
@@ -32,7 +32,6 @@ export default function App() {
     >
       <Home.Screen
         name="HomeTab"
-        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         children={() => (
           isChallengeCompleted ? (
             <HomeScreenPostChallenge
@@ -55,7 +54,6 @@ export default function App() {
       />
       <Home.Screen
         name="Trophy"
-        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         children={() => (
           isChallengeCompleted ? (
             <HomeScreenPostChallenge
@@ -78,7 +76,6 @@ export default function App() {
       />
       <Home.Screen
         name="Search"
-        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         children={() => (
           isChallengeCompleted ? (
             <HomeScreenPostChallenge
@@ -101,7 +98,6 @@ export default function App() {
       />
       <Home.Screen
         name="Heartbeat"
-        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         children={() => (
           isChallengeCompleted ? (
             <HomeScreenPostChallenge
@@ -124,7 +120,6 @@ export default function App() {
       />
       <Home.Screen
         name="Profile"
-        // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
         children={() => (
           isChallengeCompleted ? (
             <HomeScreenPostChallenge
@@ -158,6 +153,8 @@ export default function App() {
           <Drawer.Screen name="Password" component={PasswordScreen} options={{ headerTitle: "" }} />
           <Drawer.Screen name="Interests" component={InterestsScreen} options={{ headerTitle: "" }} />
           <Drawer.Screen name="Home" component={HomeNavigator} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="HomePost" component={HomeScreenPostChallenge} options={{ headerTitle: "" }} />
+          {/* isChallengeCompleted={isChallengeCompleted} setIsChallengeCompleted={setIsChallengeCompleted} */}
         </Drawer.Navigator>
       </NavigationContainer>
     // </ChallengeProvider>

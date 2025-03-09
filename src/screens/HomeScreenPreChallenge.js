@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function HomeScreenPreChallenge({ isChallengeCompleted, setIsChallengeCompleted }) {
+export default function HomeScreenPreChallenge({ isChallengeCompleted, setIsChallengeCompleted, navigation }) {//can probably take two of these away
   const [activeTab, setActiveTab] = useState("");
 
   const completeChallenge = () => {
     setIsChallengeCompleted(true);  // Set challenge as completed when button is pressed
     console.log("Challenge Completed from Pre");
-    alert("Challenge Completed: " + true);
+    // alert("Challenge Completed: " + true);
   };
 
   return (
@@ -45,6 +45,7 @@ export default function HomeScreenPreChallenge({ isChallengeCompleted, setIsChal
 
         {/* Complete Challenge Button */}
         <TouchableOpacity onPress={completeChallenge}>
+          {/* The state needs to be updated here!!!!!!!!!!!!!!!!! */}
           <Text style={styles.homeScreenPreChallengeChallengeText}>Complete Daily Challenge</Text>
         </TouchableOpacity>
         <Text style={styles.homeScreenPreChallengeChallengeSubText}>To view your friends' posts/achievements, complete yours!</Text>
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   homeScreenPreChallengeProfilePic: { width: 40, height: 40, borderRadius: 20, marginRight: 10, borderColor: 'yellow' },
   homeScreenPreChallengeTabs: { flexDirection: "row", justifyContent: "space-around", width: "100%", marginTop: 120 },
   homeScreenPreChallengeTabText: { color: "gray", fontSize: 18 }, // Use gray for inactive tabs
-  homeScreenPreChallengeActiveTab: { color: "white", fontWeight: "bold" }, // Active tab text will be white
+  homeScreenPreChallengeActiveTab: { color: "white", fontWeight: "bold" }, // Active tab
   homeScreenPreChallengeChallengeContainer: { alignItems: "center", marginTop: 100 },
   blurredImage: { width: 300, height: 200, opacity: 0.3, borderRadius: 10 },
   eyeIcon: { position: "absolute", top: "40%" },

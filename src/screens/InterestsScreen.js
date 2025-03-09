@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-// import sun from "../../assets/sun.png"
-// import { sources } from "webpack";
 
 export default function InterestsScreen({ navigation }) {
   const [selectedInterests, setSelectedInterests] = useState([]);
@@ -170,7 +168,6 @@ const styles = StyleSheet.create({
   skipText: {
     color: "#D9D9D9",
     fontSize: 16,
-    // fontWeight: "bold",
   },
   selectedCount: {
     color: "#D9D9D9",

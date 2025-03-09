@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, StyleSheet } from "react-native";
-import Svg, { Path } from "react-native-svg"; // Import SVG components
+import Svg, { Path } from "react-native-svg";
 
 export default function CreateAccountScreen({ navigation }) {
   const [email, setEmail] = useState("");
-  const [isFocused, setIsFocused] = useState(false); // State to track focus
+  const [isFocused, setIsFocused] = useState(false);
 
   const clearEmail = () => {
-    setEmail(""); // Clears the email input
+    setEmail("");
   };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      {/* Ensure only one root child (View) under TouchableWithoutFeedback */}
       <View style={styles.createAccountContainer}>
-        {/* X Button to go back to Home Screen */}
+
         <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
           <Text style={styles.closeButtonText}>X</Text>
         </TouchableOpacity>
@@ -27,7 +26,6 @@ export default function CreateAccountScreen({ navigation }) {
           Log in or Sign Up{"\n"}
         </Text>
 
-        {/* Email input field */}
         <View style={styles.emailButtonContainer}>
           <TextInput
             style={[styles.emailText, isFocused && styles.focusedInput]} // Apply focused style when focused
@@ -47,7 +45,6 @@ export default function CreateAccountScreen({ navigation }) {
           )}
         </View>
 
-        {/* Continue button */}
         <TouchableOpacity
           style={styles.continueButton}
           onPress={() => {
@@ -63,7 +60,6 @@ export default function CreateAccountScreen({ navigation }) {
 
         <Text style={styles.orText}>or</Text>
 
-        {/* Continue with Google button */}
         <TouchableOpacity style={styles.googleButton}>
           <View style={styles.googleContent}>
             {/* Google "G" Logo */}
@@ -73,7 +69,7 @@ export default function CreateAccountScreen({ navigation }) {
               <Path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
               <Path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
             </Svg>
-            {/* Google Button Text */}
+
             <Text style={styles.googleButtonText}>Continue with Google</Text>
           </View>
         </TouchableOpacity>

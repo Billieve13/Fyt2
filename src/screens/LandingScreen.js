@@ -3,7 +3,6 @@ import { View, Text, ImageBackground, TouchableOpacity, StyleSheet } from "react
 
 export default function LandingScreen({ navigation }) {
   return (
-    //source={require("../../assets/background.jpeg")}
     <ImageBackground
       style={styles.landingScreenBackground}
     >
@@ -19,7 +18,6 @@ export default function LandingScreen({ navigation }) {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.signInButton} onPress={() => navigation.navigate("Create account")}>
-            {/* need to fix the navigation for this. it currently leads nowhere*/}
             <Text style={styles.signInButtonText}>Sign in</Text>
           </TouchableOpacity>
 
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
   },
   landingScreenOverlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 1)", // Dark overlay for readability
+    backgroundColor: "rgba(0, 0, 0, 1)",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
@@ -57,9 +55,9 @@ const styles = StyleSheet.create({
   },
   landingScreenButtonContainer: {
     position: "absolute",
-    bottom: 50, // Position buttons at the bottom with some space
+    bottom: 50,
     width: "100%",
-    alignItems: "center", // Center the buttons horizontally
+    alignItems: "center",
   },
   createAccountButton: {
     backgroundColor: "#D9D9D9",
