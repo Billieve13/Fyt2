@@ -1,69 +1,70 @@
-import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-export default function HomeScreenPostChallenge() {
-  // Manage active tab state
-  const [activeTab, setActiveTab] = useState("");//need to change the state so it is not rendered each time
+// Dummy data for posts
+const posts = [
+  { id: "1", name: "John Doe", imageUri: "https://via.placeholder.com/100" },
+  { id: "2", name: "Jane Smith", imageUri: "https://via.placeholder.com/100" },
+  { id: "3", name: "Tom Brown", imageUri: "https://via.placeholder.com/100" },
+  { id: "4", name: "Alice Green", imageUri: "https://via.placeholder.com/100" },
+  { id: "5", name: "Bob White", imageUri: "https://via.placeholder.com/100" },
+];
+
+export default function HomeScreenPostChallenge({ isChallengeCompleted }) {
+  console.log("HomeScreenPostChallenge Rendered", isChallengeCompleted);
 
   return (
-    <View style={styles.homeScreencontainer}>
-      {/* Top Navigation Bar */}
-      <View style={styles.homeScreenTopNav}>
-        <Icon name="user-friends" size={24} color="white" style={styles.homeScreenTopLeftIcon} />
-        <Image source={require('../../assets/background.jpeg')} style={styles.homeScreenProfilePic} />
-      </View>
-
+    <View style={styles.homeScreenPostChallengeContainer}>
       {/* Tabs */}
-      <View style={styles.homeScreenTabs}>
-        <TouchableOpacity onPress={() => setActiveTab("Friends")}>
-          <Text style={[styles.homeScreenTabText, activeTab === "Friends" && styles.homeScreenActiveTab]}>
-            Friends
-          </Text>
+      <View style={styles.homeScreenPostChallengeTabs}>
+        <TouchableOpacity>
+          <Text style={styles.homeScreenPostChallengeTabText}>Friends</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setActiveTab("Explore")}>
-          <Text style={[styles.homeScreenTabText, activeTab === "Explore" && styles.homeScreenActiveTab]}>
-            Explore
-          </Text>
+        <TouchableOpacity>
+          <Text style={styles.homeScreenPostChallengeTabText}>Explore</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setActiveTab("Community")}>
-          <Text style={[styles.homeScreenTabText, activeTab === "Community" && styles.homeScreenActiveTab]}>
-            Community
-          </Text>
+        <TouchableOpacity>
+          <Text style={styles.homeScreenPostChallengeTabText}>Community</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Blurred Exercise Image with Eye Icon */}
-      <View style={styles.homeScreenChallengeContainer}>
-        <Image source={{ uri: "https://via.placeholder.com/300" }} style={styles.blurredImage} />
-        <Icon name="eye-slash" size={30} color="white" style={styles.eyeIcon} />
-        <Text style={styles.homeScreenChallengeText}>Complete Daily Challenge</Text>
-        <Text style={styles.homeScreenChallengeSubText}>To view your friends' posts/achievements, complete yours!</Text>
-      </View>
+      {/* Scrollable Cards */}
+      <FlatList
+        data={posts}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Image source={{ uri: item.imageUri }} style={styles.profilePic} />
+            <Text style={styles.cardText}>{item.name}</Text>
+            <View style={styles.cardIcons}>
+              <Icon name="heart" size={30} color="red" style={styles.icon} />
+              <Icon name="comment" size={30} color="white" style={styles.icon} />
+              <Icon name="heartbeat" size={30} color="white" style={styles.icon} />
+            </View>
+          </View>
+        )}
+        keyExtractor={(item) => item.id}
+      />
 
       {/* Daily Streak */}
-      <View style={styles.homeScreenDailyStreak}>
+      <View style={styles.homeScreenPostChallengeDailyStreak}>
         <Icon name="fire" size={24} color="orange" style={styles.fireIcon} />
-        <Text style={styles.homeScreenDailyStreakText}>Daily Streak</Text>
+        <Text style={styles.homeScreenPostChallengeDailyStreakText}>Daily Streak</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  homeScreencontainer: { flex: 1, backgroundColor: "black", alignItems: "center" },
-  homeScreenTopNav: { flexDirection: "row", justifyContent: "space-between", width: "100%", padding: 20, position: "absolute", top: 40 },
-  homeScreenTopLeftIcon: { marginLeft: 10 },
-  homeScreenProfilePic: { width: 40, height: 40, borderRadius: 20, marginRight: 10 },
-  homeScreenTabs: { flexDirection: "row", justifyContent: "space-around", width: "100%", marginTop: 120 },
-  homeScreenTabText: { color: "gray", fontSize: 18 }, // Use gray for inactive tabs
-  homeScreenActiveTab: { color: "white", fontWeight: "bold" }, // Active tab text will be white and bold
-  homeScreenChallengeContainer: { alignItems: "center", marginTop: 100 },
-  blurredImage: { width: 300, height: 200, opacity: 0.3, borderRadius: 10 },
-  eyeIcon: { position: "absolute", top: "40%" },
-  homeScreenChallengeText: { color: "white", fontSize: 20, fontWeight: "bold", marginTop: 10 },
-  homeScreenChallengeSubText: { color: "gray", fontSize: 14, textAlign: "center", width: 250, marginTop: 5 },
-  homeScreenDailyStreak: { flexDirection: "row", alignItems: "center", marginTop: 20 },
+  homeScreenPostChallengeContainer: { flex: 1, backgroundColor: "black", alignItems: "center" },
+  homeScreenPostChallengeTabs: { flexDirection: "row", justifyContent: "space-around", width: "100%", marginTop: 120 },
+  homeScreenPostChallengeTabText: { color: "gray", fontSize: 18 },
+  card: { backgroundColor: "white", marginBottom: 20, padding: 10, borderRadius: 10, width: "90%", alignItems: "center" },
+  profilePic: { width: 60, height: 60, borderRadius: 30 },
+  cardText: { color: "black", fontSize: 18, marginVertical: 10 },
+  cardIcons: { flexDirection: "row", justifyContent: "space-evenly", width: "100%" },
+  icon: { margin: 10 },
   fireIcon: { marginRight: 5 },
-  homeScreenDailyStreakText: { color: "white", fontSize: 16 }
+  homeScreenPostChallengeDailyStreak: { flex: 1, backgroundColor: "black", alignItems: "center" },//may need to change this
+  homeScreenPostChallengeDailyStreakText: { color: "white", fontSize: 16 }
 });

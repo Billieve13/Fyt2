@@ -1,138 +1,165 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import LandingScreen from "./src/screens/LandingScreen.js";
 import CreateAccountScreen from "./src/screens/CreateAccountScreen.js";
-// import CustomDrawer from "./src/components/CustomDrawer.js";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PasswordScreen from "./src/screens/PasswordScreen.js";
 import InterestsScreen from "./src/screens/InterestsScreen.js";
 import HomeScreenPreChallenge from "./src/screens/HomeScreenPreChallenge.js";
-// import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
+import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { ChallengeProvider } from "./src/context/ChallengeContext.js";
 
 const Drawer = createDrawerNavigator();
 const Home = createBottomTabNavigator();
 
-function HomeNavigator() {
-  // const [isChallengeCompleted, setIsChallengeCompleted] = useState(false);
+export default function App() {
+  const { isChallengeCompleted, setIsChallengeCompleted } = useState(false);  // Access the state here
 
-  // useEffect(() => {
-  //   // You can update this logic based on the actual challenge state
-  //   // For example, fetch from an API or use a global state (like Redux)
-  //   setIsChallengeCompleted(false); // Change this based on actual condition
-  // }, []);
-
-  return (
+  const HomeNavigator = () => {
+    return (
     <Home.Navigator
       screenOptions={{
-        headerShown: false, // Hide header
+        headerShown: false,
         tabBarStyle: {
-          backgroundColor: "black", // Tab bar background color
-          borderTopWidth: 0, // Remove the white line above the icons
+          backgroundColor: "black",
+          borderTopWidth: 0,
         },
-        tabBarActiveTintColor: "white", // Active tab icon color
-        tabBarInactiveTintColor: "gray", // Inactive tab icon color
+        tabBarActiveTintColor: "white",
+        tabBarInactiveTintColor: "gray",
       }}
     >
       <Home.Screen
         name="HomeTab"
         // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
-        component={HomeScreenPreChallenge}
+        children={() => (
+          isChallengeCompleted ? (
+            <HomeScreenPostChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          ) : (
+            <HomeScreenPreChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          )
+        )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="home" size={focused ? 26 : 20} color={color} />
           ),
-          tabBarLabel: "", // Hide tab name
+          tabBarLabel: "",
         }}
       />
       <Home.Screen
         name="Trophy"
         // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
-        component={HomeScreenPreChallenge}
+        children={() => (
+          isChallengeCompleted ? (
+            <HomeScreenPostChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          ) : (
+            <HomeScreenPreChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          )
+        )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="trophy" size={focused ? 26 : 20} color={color} />
           ),
-          tabBarLabel: "", // Hide tab name
+          tabBarLabel: "",
         }}
       />
       <Home.Screen
         name="Search"
         // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
-        component={HomeScreenPreChallenge}
+        children={() => (
+          isChallengeCompleted ? (
+            <HomeScreenPostChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          ) : (
+            <HomeScreenPreChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          )
+        )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="search" size={focused ? 26 : 20} color={color} />
           ),
-          tabBarLabel: "", // Hide tab name
+          tabBarLabel: "",
         }}
       />
       <Home.Screen
         name="Heartbeat"
         // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
-        component={HomeScreenPreChallenge}
+        children={() => (
+          isChallengeCompleted ? (
+            <HomeScreenPostChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          ) : (
+            <HomeScreenPreChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          )
+        )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="heartbeat" size={focused ? 26 : 20} color={color} />
           ),
-          tabBarLabel: "", // Hide tab name
+          tabBarLabel: "",
         }}
       />
       <Home.Screen
         name="Profile"
         // component={isChallengeCompleted ? HomeScreenPostChallenge : HomeScreenPreChallenge}
-        component={HomeScreenPreChallenge}
+        children={() => (
+          isChallengeCompleted ? (
+            <HomeScreenPostChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          ) : (
+            <HomeScreenPreChallenge
+              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+            />
+          )
+        )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="user" size={focused ? 26 : 20} color={color} />
           ),
-          tabBarLabel: "", // Hide tab name
+          tabBarLabel: "",
         }}
       />
     </Home.Navigator>
   );
-}
+};
 
-export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        screenOptions={{
-          headerShown: false, // Disable the white bar at the top for the entire Drawer
-        }}
-      >
-        <Drawer.Screen
-          name="Landing"
-          component={LandingScreen}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
-        <Drawer.Screen
-          name="Create account"
-          component={CreateAccountScreen}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
-        <Drawer.Screen
-          name="Password"
-          component={PasswordScreen}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
-        <Drawer.Screen
-          name="Interests"
-          component={InterestsScreen}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
-        <Drawer.Screen
-          name="Home"
-          component={HomeNavigator}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        />
-        {/* <Drawer.Screen
-          name="HomePost"
-          component={HomeScreenPostChallenge}
-          options={{ headerTitle: '' }} // Hide name for the drawer screen
-        /> */}
-      </Drawer.Navigator>
-    </NavigationContainer>
+    // <ChallengeProvider>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="Landing" screenOptions={{ headerShown: false }}>
+          <Drawer.Screen name="Landing" component={LandingScreen} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Create account" component={CreateAccountScreen} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Password" component={PasswordScreen} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Interests" component={InterestsScreen} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Home" component={HomeNavigator} options={{ headerTitle: "" }} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    // </ChallengeProvider>
   );
 }
