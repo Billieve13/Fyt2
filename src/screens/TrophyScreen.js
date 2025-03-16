@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
-    marginTop: 20,
+    marginTop: 15,
     marginBottom: 20,
   },
   tabText: {

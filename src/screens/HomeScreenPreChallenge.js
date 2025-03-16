@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function HomeScreenPreChallenge({ isChallengeCompleted, setIsChallengeCompleted, navigation }) {//can probably take two of these away
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("Friends");
 
   const completeChallenge = () => {
     setIsChallengeCompleted(true);  // Set challenge as completed when button is pressed
