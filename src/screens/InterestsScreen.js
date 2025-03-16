@@ -18,7 +18,7 @@ export default function InterestsScreen({ navigation }) {
       { label: "Weightlifting", icon: "weight-lifter", color: "#A9A9A9" },
       { label: "Biking", icon: "bike", color: "#32CD32" },
       { label: "Yoga", icon: "meditation", color: "#BA55D3" },
-      { label: "Boating", icon: "oar", color: "#4682B4" },
+      { label: "Rowing", icon: "oar", color: "#4682B4" },
     ],
     "Diet": [
       { label: "Pescatarian", icon: "fish", color: "#00CED1" },
@@ -87,7 +87,7 @@ export default function InterestsScreen({ navigation }) {
           style={styles.nextButton}
           onPress={() => navigation.navigate("Home")}
         >
-          <MaterialCommunityIcons name="arrow-right" size={24} color="#FFFFFF" />
+          <MaterialCommunityIcons name="chevron-right" size={30} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
     </View>
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
   chip: {
     backgroundColor: "#FFFFFF",
     paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 20,
+    paddingHorizontal: 10,
+    borderRadius: 10,
     marginRight: 10,
     marginBottom: 10,
     flexDirection: "row",
