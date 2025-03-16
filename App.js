@@ -7,6 +7,8 @@ import PasswordScreen from "./src/screens/PasswordScreen.js";
 import InterestsScreen from "./src/screens/InterestsScreen.js";
 import HomeScreenPreChallenge from "./src/screens/HomeScreenPreChallenge.js";
 import HomeScreenPostChallenge from "./src/screens/HomeScreenPostChallenge.js";
+import TrophyScreen from "./src/screens/TrophyScreen.js";
+import ProfileScreen from "./src/screens/ProfileScreen.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import { ChallengeProvider } from "./src/context/ChallengeContext.js";
@@ -54,19 +56,20 @@ export default function App() {
       />
       <Home.Screen
         name="Trophy"
-        children={() => (
-          isChallengeCompleted ? (
-            <HomeScreenPostChallenge
-              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
-              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
-            />
-          ) : (
-            <HomeScreenPreChallenge
-              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
-              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
-            />
-          )
-        )}
+        component={TrophyScreen}  // Navigate directly to TrophyScreen
+        // children={() => (
+        //   isChallengeCompleted ? (
+        //     <HomeScreenPostChallenge
+        //       isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+        //       setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+        //     />
+        //   ) : (
+        //     <HomeScreenPreChallenge
+        //       isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+        //       setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+        //     />
+        //   )
+        // )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="trophy" size={focused ? 26 : 20} color={color} />
@@ -120,19 +123,20 @@ export default function App() {
       />
       <Home.Screen
         name="Profile"
-        children={() => (
-          isChallengeCompleted ? (
-            <HomeScreenPostChallenge
-              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
-              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
-            />
-          ) : (
-            <HomeScreenPreChallenge
-              isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
-              setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
-            />
-          )
-        )}
+        component={ProfileScreen}
+        // children={() => (
+        //   isChallengeCompleted ? (
+        //     <HomeScreenPostChallenge
+        //       isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+        //       setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+        //     />
+        //   ) : (
+        //     <HomeScreenPreChallenge
+        //       isChallengeCompleted={isChallengeCompleted}  // Pass state as prop
+        //       setIsChallengeCompleted={setIsChallengeCompleted}  // Pass state setter as prop
+        //     />
+        //   )
+        // )}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon name="user" size={focused ? 26 : 20} color={color} />
@@ -154,6 +158,8 @@ export default function App() {
           <Drawer.Screen name="Interests" component={InterestsScreen} options={{ headerTitle: "" }} />
           <Drawer.Screen name="Home" component={HomeNavigator} options={{ headerTitle: "" }} />
           <Drawer.Screen name="HomePost" component={HomeScreenPostChallenge} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Trophy" component={TrophyScreen} options={{ headerTitle: "" }} />
+          <Drawer.Screen name="Profile" component={ProfileScreen} options={{ headerTitle: "" }} />
           {/* isChallengeCompleted={isChallengeCompleted} setIsChallengeCompleted={setIsChallengeCompleted} */}
         </Drawer.Navigator>
       </NavigationContainer>
